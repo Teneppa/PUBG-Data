@@ -93,7 +93,7 @@
                     console.error('Error:', error);
 
                     // Load the weapons from a local javascript file (in case it can't be fetched)
-                    weapons = weapon_json_string;
+                    let weapons = JSON.parse(weapon_json_string);
 
                     /* Create a container for the weapons */
                     const weaponsDiv = document.getElementById('weapons');

@@ -1,5 +1,4 @@
-weapon_json_string = `{
-    [
+weapon_json_string = `[
     {
         "name": "M16A4",
         "type": "AR"
@@ -276,5 +275,4 @@ weapon_json_string = `{
         "name": "Stun Gun",
         "type": "ETC"
     }
-]
-        }`;
+]`;
