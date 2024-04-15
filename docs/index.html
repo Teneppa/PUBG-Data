@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/weapons.js"></script>
 </head>
 
 <body>
     <div id="navbar">
         <div id="navbar-content"></div>
-        
+
         <a id="logo-href" href="https://github.com/Teneppa">
             <img id="logo" src="assets/images/logo.png" alt="Logo">
         </a>
@@ -20,6 +21,7 @@
 
     <script>
         function loadWeapons() {
+
             fetch('https://github.com/Teneppa/PUBG-Data/blob/main/docs/weapons.json')
                 .then(response => response.json())
                 .then(weapons => {
@@ -89,6 +91,72 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
+
+                    // Load the weapons from a local javascript file (in case it can't be fetched)
+                    weapons = weapon_json_string;
+
+                    /* Create a container for the weapons */
+                    const weaponsDiv = document.getElementById('weapons');
+                    const navbar = document.getElementById('navbar-content');
+
+                    // Group weapons by type
+                    const types = {};
+                    weapons.forEach(weapon => {
+                        if (!types[weapon.type]) {
+                            types[weapon.type] = [];
+                        }
+                        types[weapon.type].push(weapon);
+                    });
+
+                    // Create a link in the navbar for each type
+                    Object.keys(types).forEach(type => {
+                        const link = document.createElement('a');
+                        link.href = `#${type}`;
+                        link.textContent = type;
+                        link.addEventListener('click', function (event) {
+                            event.preventDefault();
+
+                            // Remove the 'active' class from all links
+                            const navbarLinks = document.querySelectorAll('#navbar-content > a');
+                            navbarLinks.forEach(link => {
+                                link.classList.remove('active');
+                            });
+
+                            // Add the 'active' class to the clicked link
+                            link.classList.add('active');
+
+                            showType(type);
+                        });
+                        navbar.appendChild(link);
+                    });
+
+                    // Create a div for each type
+                    Object.keys(types).forEach(type => {
+                        const typeDiv = document.createElement('div');
+                        typeDiv.id = type; // Set the id to the type
+                        typeDiv.className = type; // Set the class name to the type
+
+                        // Add an h1 element with the type
+                        /*
+                        const h1 = document.createElement('h1');
+                        h1.textContent = type;
+                        typeDiv.appendChild(h1);
+                        */
+
+                        // Add weapons to the type div
+                        types[type].forEach(weapon => {
+                            const weaponElement = document.createElement('p');
+                            weaponElement.textContent = weapon.name;
+                            typeDiv.appendChild(weaponElement);
+                        });
+
+                        weaponsDiv.appendChild(typeDiv);
+                    });
+
+                    // Show the first type by default
+                    showType(Object.keys(types)[0]);
+
+                    /* end of container */
                 });
         }
 
