@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -13,14 +13,14 @@
         <div id="navbar-content"></div>
         
         <a id="logo-href" href="https://github.com/Teneppa">
-            <img id="logo" src="images/logo.png" alt="Logo">
+            <img id="logo" src="assets/images/logo.png" alt="Logo">
         </a>
     </div>
     <div id="weapons"></div>
 
     <script>
         function loadWeapons() {
-            fetch('http://localhost:8000/weapons')
+            fetch('https://github.com/Teneppa/PUBG-Data/blob/main/docs/weapons.json')
                 .then(response => response.json())
                 .then(weapons => {
 
