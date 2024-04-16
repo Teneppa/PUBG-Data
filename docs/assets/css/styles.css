@@ -47,12 +47,12 @@ body {
 }
 
 #navbar-content>a:hover {
-    background-color: #383a3b;
+    background-color: #454749;
 }
 
 #navbar-content>a.active {
     background-color: #ff2d23;
-    color: #fff;
+    color: #3b3b3b;
 }
 
 h1 {
