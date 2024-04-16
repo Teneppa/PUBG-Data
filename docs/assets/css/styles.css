@@ -1,6 +1,16 @@
 body {
     background-color: #181a1b;
     color: #fff;
+
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: large;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
 }
 
 #navbar {
@@ -56,4 +66,26 @@ h1 {
 
 #weapons>div {
     margin-bottom: 40px;
+}
+
+.weapon-anchor {
+    text-decoration: none;
+    color: inherit;
+
+    transition: color 0.3s ease;
+}
+
+.weapon-anchor:hover {
+    text-decoration: none;
+    color: #ff2d23;
+}
+
+/* Loadout */
+.loadout > h2 {
+    color:rgb(255, 255, 255)
+}
+
+.loadout > ul > li {
+    font-size: larger;
+    list-style-type: square;
 }
